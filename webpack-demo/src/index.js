@@ -1,12 +1,16 @@
-import _ from 'lodash';
-import myName from './myName';
+import { cube } from './math.js';
+
+if (process.env.NODE_ENV !== 'production') {
+  console.log('Looks like we are in development mode!');
+}
 
 function component() {
-  const element = document.createElement('div');
+  const element = document.createElement('pre');
 
-  // Lodash, now imported by this script
-  // element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.textContent = myName('Cody');
+  element.innerHTML = [
+    'Hello webpack!',
+    '5 cubed is equal to ' + cube(5)
+  ].join('\n\n');
 
   return element;
 }
