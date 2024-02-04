@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Exercise</title>
+
+  <style>
+    img {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" placeholder="e.g. cat/dog">
+  <button>Search</button>
+  <img src="#" alt="">
+  <script>
+    async function searchGif(search) {
+      return fetch(`https://api.giphy.com/v1/gifs/translate?api_key=lej803Gy5HZCND6QIjPdEhnYaShLbNKQ&s=${search}`, { mode: 'cors'})
+      .then((response) => {
+        return response.json();
+      });
+    }
+
+    const search = document.querySelector('button');
+    
+    search.addEventListener('click', (e) => {
+      const inputElm = document.querySelector('input');
+      const searchVal = inputElm.value.trim();
+      if (searchVal) {
+        searchGif(searchVal)
+        .then((response) => {
+          if (response.data.length === 0) {
+            throw new Error('No response data found!');
+          }
+          const img = document.querySelector('img');
+          img.src = response.data.images.original.url;
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+      }
+    })
+  </script>
+</body>
+</html>
