@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App component > renders our first test 1`] = `
+<div>
+  <div>
+    <h1>
+      Our first test
+    </h1>
+    <button
+      style="color: blue; font-size: 12px;"
+    >
+      Click Me!
+    </button>
+  </div>
+</div>
+`;
